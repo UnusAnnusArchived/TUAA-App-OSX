@@ -2,22 +2,39 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electron', {
   ipcRenderer: {
-    myPing() {
-      ipcRenderer.send('ipc-example', 'ping');
+    closeWindow() {
+      ipcRenderer.send('close-window');
+    },
+    minimizeWindow() {
+      ipcRenderer.send('minimize-window');
+    },
+    toggleFullScreen() {
+      ipcRenderer.send('toggle-fullscreen');
+    },
+    getFullscreenStatus() {
+      return new Promise((resolve) => {
+        ipcRenderer.send('get-fullscreen-status');
+        ipcRenderer.once('get-fullscreen-status', (evt, ...args) => {
+          resolve([evt, args]);
+        });
+      });
+    },
+    getColor(color) {
+      return new Promise((resolve) => {
+        ipcRenderer.send('get-color', color);
+        ipcRenderer.once('get-color', (evt, ...args) => {
+          resolve([evt, args]);
+        });
+      });
+    },
+    quitApp() {
+      ipcRenderer.send('quit-app');
     },
     on(channel, func) {
-      const validChannels = ['ipc-example'];
-      if (validChannels.includes(channel)) {
-        // Deliberately strip event as it includes `sender`
-        ipcRenderer.on(channel, (event, ...args) => func(...args));
-      }
+      ipcRenderer.on(channel, (event, ...args) => func(...args));
     },
     once(channel, func) {
-      const validChannels = ['ipc-example'];
-      if (validChannels.includes(channel)) {
-        // Deliberately strip event as it includes `sender`
-        ipcRenderer.once(channel, (event, ...args) => func(...args));
-      }
+      ipcRenderer.once(channel, (event, ...args) => func(...args));
     },
   },
 });

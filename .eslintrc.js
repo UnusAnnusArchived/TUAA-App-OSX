@@ -6,6 +6,17 @@ module.exports = {
     'import/no-unresolved': 'error',
     // Since React 17 and typescript 4.1 you can safely disable the rule
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-no-bind': 'off',
+    'jsx-a11y/media-has-caption': 'off',
+    'react/prop-types': 'off',
+    'class-methods-use-this': 'off',
+    'react/no-array-index-key': 'off',
+    'no-alert': 'off',
+    'react/button-has-type': 'off',
+    'no-nested-ternary': 'off',
+    'eslint/always-return': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

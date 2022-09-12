@@ -9,7 +9,13 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import {
+  app,
+  BrowserWindow,
+  shell,
+  ipcMain,
+  systemPreferences,
+} from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -25,10 +31,28 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
+ipcMain.on('close-window', () => {
+  mainWindow?.close?.();
+});
+
+ipcMain.on('minimize-window', () => {
+  mainWindow?.minimize?.();
+});
+
+ipcMain.on('toggle-fullscreen', () => {
+  mainWindow?.setFullScreen(!mainWindow?.fullScreen);
+});
+
+ipcMain.on('get-fullscreen-status', (evt) => {
+  evt.reply(mainWindow?.fullScreen);
+});
+
+ipcMain.on('get-color', (evt, color) => {
+  evt.reply(systemPreferences.getColor(color));
+});
+
+ipcMain.on('quit-app', (evt) => {
+  app.quit();
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -72,10 +96,19 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
+    minWidth: 600,
     height: 728,
+    minHeight: 400,
     icon: getAssetPath('icon.png'),
+    transparent: true,
+    backgroundColor: '#00000000',
+    vibrancy: 'under-window',
+    roundedCorners: true,
+    frame: false,
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js'),
+      webSecurity: false,
     },
   });
 
@@ -94,6 +127,14 @@ const createWindow = async () => {
 
   mainWindow.on('closed', () => {
     mainWindow = null;
+  });
+
+  mainWindow.on('enter-full-screen', () => {
+    mainWindow?.webContents.send('fullscreen-status-change', true);
+  });
+
+  mainWindow.on('leave-full-screen', () => {
+    mainWindow?.webContents.send('fullscreen-status-change', false);
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);

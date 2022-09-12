@@ -76,6 +76,17 @@ const configuration: webpack.Configuration = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      // Videos
+      {
+        test: /\.webm/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'video/webm',
+          },
+        },
+      },
     ],
   },
 

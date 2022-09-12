@@ -1,0 +1,36 @@
+.videoLink {
+  cursor: default;
+  flex: 1 1 100px;
+  display: flex;
+
+  .video {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+    border-radius: 20px;
+    flex-grow: 1;
+
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba(44, 44, 46, 0.9);
+    }
+
+    @media (prefers-color-scheme: light) {
+      background-color: #f7f7f8;
+    }
+
+    .thumbnail {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .title {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

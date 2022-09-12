@@ -1,0 +1,43 @@
+.player {
+  margin-top: 48px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.controls {
+  padding: 2px 8px;
+  color: #ffffff;
+  background-color: rgba(36, 36, 36, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 10px;
+  backdrop-filter: blur(12px);
+
+  span {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.topControls {
+  position: absolute;
+  top: 60px;
+  left: 237px;
+  width: 70px;
+  height: 30px;
+}
+
+.bottomControls {
+  position: relative;
+  bottom: calc(1rem + 14px);
+  width: 100%;
+  left: 6px;
+}
+
+.progressBar {
+  flex-grow: 9999 !important;
+}
