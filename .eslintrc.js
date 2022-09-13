@@ -17,6 +17,7 @@ module.exports = {
     'eslint/always-return': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'no-plusplus': 'off',
   },
   parserOptions: {
     ecmaVersion: 2020,

@@ -50,3 +50,28 @@
     }
   }
 }
+
+.resultsContainer {
+  position: absolute;
+  display: flex;
+  transform: translateY(-18px);
+  width: 220px;
+  justify-content: center;
+}
+
+.results {
+  width: 200px;
+  height: 240px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+  z-index: 10;
+  @media (prefers-color-scheme: dark) {
+    background-color: rgb(28, 28, 30, 0.8);
+  }
+}
+
+.hide {
+  display: none;
+}

@@ -37,10 +37,10 @@ jobs:
         run: |
           npm run test
 
-      - name: Upload Universal Artifacts
+      - name: Upload universal Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Universal
+          name: universal
           path: release/build/*-universal.dmg
 
       - name: Upload arm64 Artifacts
