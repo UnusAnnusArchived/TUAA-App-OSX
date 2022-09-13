@@ -46,5 +46,6 @@
     "buildResources": "assets",
     "output": "release/build"
   },
-  "extraResources": ["./assets/**"]
+  "extraResources": ["./assets/**"],
+  "entitlements": "assets/entitlements.mac.plist"
 }
