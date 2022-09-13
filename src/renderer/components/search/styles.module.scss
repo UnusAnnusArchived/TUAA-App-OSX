@@ -1,9 +1,52 @@
 .container {
   display: flex;
   justify-content: center;
+  margin-bottom: 18px;
 }
 
 .searchbox {
   width: 200px;
   height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.searchIcon {
+  margin: 8px;
+  @media (prefers-color-scheme: dark) {
+    color: #c0bab7;
+  }
+
+  @media (prefers-color-scheme: light) {
+    color: #5d5854;
+  }
+}
+
+.searchBar {
+  all: unset;
+  display: inline-block;
+  font-size: 0.8rem;
+  flex-grow: 1;
+  padding-right: 10px;
+
+  &,
+  &::placeholder {
+    @media (prefers-color-scheme: dark) {
+      color: #c0bab7;
+    }
+
+    @media (prefers-color-scheme: light) {
+      color: #5d5854;
+    }
+  }
 }
