@@ -40,6 +40,14 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: built dmgs
-          path: |
-            release/build/*.dmg
+          - name: Universal
+            path: |
+              release/build/*-universal.dmg
+          - name: arm64
+            path: |
+              release/build/*-arm64.dmg
+          - name: x64
+            path: |
+              release/build/*.dmg
+              !release/build/*-universal.dmg
+              !release/build/*-arm64.dmg
