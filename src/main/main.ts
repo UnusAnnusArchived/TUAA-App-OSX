@@ -51,7 +51,7 @@ ipcMain.on('get-color', (evt, color) => {
   evt.reply(systemPreferences.getColor(color));
 });
 
-ipcMain.on('quit-app', (evt) => {
+ipcMain.on('quit-app', () => {
   app.quit();
 });
 

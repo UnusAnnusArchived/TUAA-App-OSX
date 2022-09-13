@@ -14,7 +14,7 @@ export default function App() {
   const [showBackButton, setShowBackButton] = useState<boolean>(false);
   const [hideMenu, setHideMenu] = useState<boolean>(true);
 
-  const { ipcRenderer } = (window as any).electron;
+  // const { ipcRenderer } = (window as any).electron;
 
   function setTitlebarStatus(settings: ITitlebarStatusSettings) {
     if (settings.pageName !== undefined) {

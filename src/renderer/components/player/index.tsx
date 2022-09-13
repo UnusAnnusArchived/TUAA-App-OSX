@@ -9,7 +9,7 @@ interface IProps {
 
 const Player: React.FC<IProps> = ({ video }) => {
   const videoElement = useRef<HTMLVideoElement>(null);
-  const [showControls, setShowControls] = useState(true);
+  // const [showControls, setShowControls] = useState(true);
   const [isFullScreen, setIsFullscreen] = useState(false);
   const [isPiP, setIsPiP] = useState(false);
 
@@ -17,7 +17,7 @@ const Player: React.FC<IProps> = ({ video }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
-  const [volume, setVolume] = useState(1);
+  const [, /* volume, */ setVolume] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {

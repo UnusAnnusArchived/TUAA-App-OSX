@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-type Props = any;
-
 export const Controls = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
