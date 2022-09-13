@@ -1,6 +1,7 @@
 {
   "name": "tuaa-app-osx",
-  "version": "1.0.0",
+  "productName": "TUAA",
+  "version": "1.0.0-pre2",
   "description": "Official The Unus Annus Archive app for macOS",
   "main": "./dist/main/main.js",
   "author": {
